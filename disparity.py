@@ -3,17 +3,17 @@ import glob
 import os
 import numpy as np
  
-LEFT_DIR = "test_disparity/left"
-RIGHT_DIR = "test_disparity/right"
+LEFT_DIR = "calib_dataset/rectified/left"
+RIGHT_DIR = "calib_dataset/rectified/right"
  
 def list_pairs():
  
-    lefts = sorted(glob.glob(os.path.join(LEFT_DIR, "Im_L_*.png")))
+    lefts = sorted(glob.glob(os.path.join(LEFT_DIR, "rect_left_*.png")))
     pairs = []
  
     for lf in lefts:
-        idx = os.path.basename(lf).replace("Im_L_", "").replace(".png", "")
-        rf = os.path.join(RIGHT_DIR, f"Im_R_{idx}.png")
+        idx = os.path.basename(lf).replace("rect_left_", "").replace(".png", "")
+        rf = os.path.join(RIGHT_DIR, f"rect_right_{idx}.png")
  
         if os.path.exists(rf):
             pairs.append((lf, rf, idx))

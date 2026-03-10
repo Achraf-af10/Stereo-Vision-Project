@@ -33,12 +33,12 @@ def ensure_dirs():
     os.makedirs(RECT_RIGHT_DIR, exist_ok=True)
  
 def list_pairs():
-    lefts = sorted(glob.glob(os.path.join(LEFT_DIR, "left_*.png")))
+    lefts = sorted(glob.glob(os.path.join(LEFT_DIR, "Im_L_*.png")))
     pairs = []
  
     for lf in lefts:
-        idx = os.path.basename(lf).replace("left_", "").replace(".png", "")
-        rf = os.path.join(RIGHT_DIR, f"right_{idx}.png")
+        idx = os.path.basename(lf).replace("Im_L_", "").replace(".png", "")
+        rf = os.path.join(RIGHT_DIR, f"Im_R_{idx}.png")
  
         if os.path.exists(rf):
             pairs.append((lf, rf, idx))

@@ -24,9 +24,9 @@ CAM_LEFT  = "/dev/video4"   # HP (mets /dev/video4 si tu veux l'autre à gauche)
 
 CAM_RIGHT = "/dev/video2"   # UGREEN
  
-CHESSBOARD_SIZE = (9, 7)    # (colonnes, lignes) = coins INTERNES
+CHESSBOARD_SIZE = (11, 7)    # (colonnes, lignes) = coins INTERNES
 
-SQUARE_SIZE = 0.015         # mètres (15 mm)
+SQUARE_SIZE = 0.0265         # mètres (15 mm)
  
 MIN_PAIRS = 10
 
@@ -40,11 +40,10 @@ CAPTURE_COOLDOWN = 0.4
  
 # Capture settings (important pour latence/bandwidth)
 
-CAP_W = 640
+CAP_W = 1024
+CAP_H = 576
 
-CAP_H = 480
-
-CAP_FPS = 30
+CAP_FPS = 15
  
 # =========================
 

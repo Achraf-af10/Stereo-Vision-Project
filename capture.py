@@ -10,7 +10,6 @@ import cv2
 
 # =========================
 
-# Mets ici les bons index ou /dev/videoX selon ta machine
 
 CAM_LEFT = "/dev/video2"
 
@@ -28,7 +27,7 @@ CAP_H = 576
 
 CAP_FPS = 15
  
-CAPTURE_COOLDOWN = 0.4  # évite les doubles captures trop rapides
+CAPTURE_COOLDOWN = 0.4 
  
 # =========================
 

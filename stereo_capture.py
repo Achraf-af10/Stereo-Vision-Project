@@ -10,8 +10,8 @@ CAM_LEFT  = "/dev/video2"
 CAM_RIGHT = "/dev/video4"
 
 OUT_DIR = "calib_dataset"
-LEFT_DIR = os.path.join(OUT_DIR, "left_rect")
-RIGHT_DIR = os.path.join(OUT_DIR, "right_rect")
+LEFT_DIR = os.path.join(OUT_DIR, "left")
+RIGHT_DIR = os.path.join(OUT_DIR, "right")
 
 CAPTURE_COOLDOWN = 0.4
 CAP_W, CAP_H, CAP_FPS = 1024, 576, 15
@@ -37,11 +37,11 @@ def detect_corners(img):
     return ok, corners
 
 def list_pairs():
-    lefts = sorted(glob.glob(os.path.join(LEFT_DIR, "left_r*.png")))
+    lefts = sorted(glob.glob(os.path.join(LEFT_DIR, "left_*.png")))
     pairs = []
     for lf in lefts:
-        idx = os.path.basename(lf).replace("left_r", "").replace(".png", "")
-        rf = os.path.join(RIGHT_DIR, f"right_r{idx}.png")
+        idx = os.path.basename(lf).replace("left_", "").replace(".png", "")
+        rf = os.path.join(RIGHT_DIR, f"right_{idx}.png")
         if os.path.exists(rf):
             pairs.append((lf, rf))
     return pairs
@@ -99,8 +99,8 @@ def capture_pairs():
             if not (okCL and okCR):
                 print("Capture refusée : damier pas détecté sur les 2 caméras.")
                 continue
-            lf = os.path.join(LEFT_DIR, f"left_r{idx:04d}.png")
-            rf = os.path.join(RIGHT_DIR, f"right_r{idx:04d}.png")
+            lf = os.path.join(LEFT_DIR, f"left_{idx:04d}.png")
+            rf = os.path.join(RIGHT_DIR, f"right_{idx:04d}.png")
             cv2.imwrite(lf, frameL)
             cv2.imwrite(rf, frameR)
             print(f"[OK] Sauvé paire #{idx}")

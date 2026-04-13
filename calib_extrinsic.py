@@ -8,7 +8,7 @@ import random
 # CONFIG
 # =========================
 CHESSBOARD_SIZE = (11, 7)   # coins internes (cols, rows)
-SQUARE_SIZE = 0.0265           # m (20 mm)
+SQUARE_SIZE = 0.0265        
 MIN_INTRINSIC_IMAGES = 5
 MIN_STEREO_PAIRS = 8
 OUT_DIR = "calib_dataset"

@@ -68,6 +68,53 @@ Stereo-Vision-Project/
 
 ---
 
+## 📷 Hardware Setup
+
+| Component | Details |
+|---|---|
+| **Camera (×2)** | Logitech C270 HD Webcam |
+| **Resolution** | 720p (1280×720) |
+| **Interface** | USB 2.0 |
+| **Calibration pattern** | Printed chessboard |
+| **OS** | Ubuntu 24.04 (tested) |
+
+> Both cameras are mounted on a rigid rig to maintain a fixed baseline. The measured baseline after stereo calibration is approximately **T ≈ 116.8 mm**.
+
+---
+
+## 📐 Calibration Results
+
+Calibration was performed using **20 stereo image pairs** of a chessboard pattern.
+
+### Intrinsic Parameters
+
+| | Left Camera | Right Camera |
+|---|---|---|
+| **fx** | 1173.4 px | 1145.2 px |
+| **fy** | 1179.3 px | 1152.8 px |
+| **cx** | 525.5 px | 509.4 px |
+| **cy** | 265.4 px | 264.2 px |
+| **Mean reprojection error** | 0.2502 px | 0.2640 px |
+| **RMS error** | 0.2983 px | 0.3172 px |
+
+### Stereo Extrinsic Parameters
+
+```
+Stereo RMS: 0.384 px   ✅ (excellent — below 0.5 px threshold)
+
+R ≈ [[ 0.9996, -0.0104, -0.0248 ],     # Nearly identity — cameras are well aligned
+     [ 0.0127,  0.9956,  0.0931 ],
+     [ 0.0237, -0.0933,  0.9954 ]]
+
+T ≈ [[ 116.8 mm ],    # Horizontal baseline
+     [   2.2 mm ],    # Negligible vertical offset
+     [  -9.6 mm ]]    # Negligible depth offset
+```
+
+> A stereo RMS below **0.5 px** indicates a high-quality calibration suitable for accurate depth estimation.
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -146,6 +193,27 @@ python disparity.py
 | `opencv-python` | Camera capture, calibration, rectification, StereoSGBM |
 | `numpy` | Matrix operations and data handling |
 | `open3d` | 3D point cloud generation and visualization |
+
+---
+
+## ⚠️ Known Issues
+
+**Qt font warning on Linux (Wayland/GNOME)**
+
+When running scripts that open OpenCV windows, you may see:
+
+```
+Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome.
+QFontDatabase: Cannot find font directory ...
+```
+
+This is a cosmetic warning from OpenCV's Qt backend and **does not affect functionality**. To suppress it, run:
+
+```bash
+export QT_QPA_PLATFORM=xcb
+```
+
+Or add it permanently to your `~/.bashrc`.
 
 ---
 

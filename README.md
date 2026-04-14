@@ -24,7 +24,7 @@ This project implements a **complete stereo vision pipeline** using two synchron
 4. **Disparity map computation** using the StereoSGBM algorithm
 5. **3D point cloud reconstruction** with Open3D
 
-> Developed as part of a Computer Vision course at **Polytech Dijon – Le Creusot** (Robotics Engineering, Year 2), supervised by **Yohan Fougerolle**.
+> Developed as part of a Computer Vision course at **Polytech Dijon** (Robotics Engineering, Year 4), supervised by **Yohan Fougerolle**.
 
 ---
 
@@ -220,7 +220,7 @@ The StereoSGBM algorithm computes a dense disparity map from the rectified stere
 
 | Rectified Left | Rectified Right | Disparity Map |
 |:-:|:-:|:-:|
-| ![left_rect](assets/left_rectified.png) | ![right_rect](assets/right_rectified.png) | ![disparity](assets/disparity_map.png) |
+| ![left_rect](test_disparity/rectified/left/rect_left_1.png) | ![right_rect](test_disparity/rectified/right/rect_right_1.png) | ![disparity](assets/disparity_map.png) |
 
 ---
 
@@ -279,19 +279,6 @@ Or add it permanently to your `~/.bashrc`.
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Here's how to get started:
-
-1. **Fork** the repository
-2. **Create a branch** for your feature: `git checkout -b feature/your-feature`
-3. **Commit** your changes: `git commit -m "feat: add your feature"`
-4. **Push** to your branch: `git push origin feature/your-feature`
-5. Open a **Pull Request**
-
-Please keep your code clean, add comments where necessary, and test your changes before submitting.
-
----
 
 ## 👥 Team
 

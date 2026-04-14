@@ -166,11 +166,73 @@ python disparity.py
 
 ## 📸 Demo
 
-> *(Add your own screenshots or GIFs here — disparity map, point cloud visualization, rectified pairs, etc.)*
+The full pipeline is illustrated below across its five major stages.
 
-| Rectified Pair | Disparity Map | 3D Point Cloud |
+---
+
+### 1️⃣ Intrinsic Calibration — Reprojection Validation
+
+After computing each camera's intrinsic matrix and distortion coefficients, detected corners (🟢 green) are compared against reprojected points (🔴 red) for every calibration image. A tight overlap confirms a good calibration.
+
+> 📷 *Left camera — Mean error: 0.2502 px | Right camera — Mean error: 0.2640 px*
+
+| Left Camera | Right Camera |
+|:-:|:-:|
+| ![reproj_left](assets/reprojection_left.png) | ![reproj_right](assets/reprojection_right.png) |
+
+---
+
+### 2️⃣ Extrinsic Calibration — Epipolar Line Verification
+
+Once stereo calibration is complete, epipolar lines are drawn on both images. A point selected in the left image (🟢) must lie exactly on its corresponding epipolar line in the right image — and vice versa. This verifies the accuracy of the Fundamental matrix **F**.
+
+> 📷 *Stereo RMS: 0.384 px ✅*
+
+| Left — Epipolar Lines | Right — Epipolar Lines |
+|:-:|:-:|
+| ![epipolar_left](assets/epipolar_left.png) | ![epipolar_right](assets/epipolar_right.png) |
+
+---
+
+### 3️⃣ Stereo Rectification
+
+Rectification warps both images so that epipolar lines become perfectly horizontal. This is a prerequisite for efficient disparity computation. Results are shown for both the chessboard calibration pairs and real scene images.
+
+**Chessboard pairs (calibration dataset)**
+
+| Before Rectification | After Rectification |
+|:-:|:-:|
+| ![rect_chess_before](assets/rectification_chess_before.png) | ![rect_chess_after](assets/rectification_chess_after.png) |
+
+**Real scene images (test object)**
+
+| Before Rectification | After Rectification |
+|:-:|:-:|
+| ![rect_scene_before](assets/rectification_scene_before.png) | ![rect_scene_after](assets/rectification_scene_after.png) |
+
+> 💡 Horizontal colored lines overlaid on rectified pairs confirm that corresponding features are perfectly aligned row-by-row.
+
+---
+
+### 4️⃣ Disparity Map
+
+The StereoSGBM algorithm computes a dense disparity map from the rectified stereo pair. Brighter regions correspond to closer objects (larger disparity), darker regions to farther ones.
+
+| Rectified Left | Rectified Right | Disparity Map |
 |:-:|:-:|:-:|
-| ![rectified](https://via.placeholder.com/220x140?text=Rectified+Pair) | ![disparity](https://via.placeholder.com/220x140?text=Disparity+Map) | ![pointcloud](https://via.placeholder.com/220x140?text=3D+Point+Cloud) |
+| ![left_rect](assets/left_rectified.png) | ![right_rect](assets/right_rectified.png) | ![disparity](assets/disparity_map.png) |
+
+---
+
+### 5️⃣ 3D Point Cloud Reconstruction
+
+The disparity map is back-projected into 3D using the **Q** reprojection matrix from `stereoRectify`. The resulting point cloud is visualized with Open3D.
+
+| Point Cloud (front view) | Point Cloud (side view) |
+|:-:|:-:|
+| ![pcd_front](assets/pointcloud_front.png) | ![pcd_side](assets/pointcloud_side.png) |
+
+> 📁 To add your own screenshots, place them in the `assets/` folder at the root of the repository with the filenames shown above.
 
 ---
 
@@ -233,13 +295,13 @@ Please keep your code clean, add comments where necessary, and test your changes
 
 ## 👥 Team
 
-This project was developed by three engineering students from **Polytech Dijon – Le Creusot** (Robotics, Year 2).
+This project was developed by three engineering students from **Polytech Dijon** (Robotics, Year 4).
 
-| | Name | GitHub |
-|---|---|---|
-| 🤖 | **Achraf Ahmed Fouatih** | [![GitHub](https://img.shields.io/badge/Achraf--af10-181717?style=flat&logo=github)](https://github.com/Achraf-af10) |
-| 🤖 | **Lyes Aiboud** | [![GitHub](https://img.shields.io/badge/Lyes--aib-181717?style=flat&logo=github)](https://github.com/Lyes-aib) |
-| 🤖 | **Reina** | [![GitHub](https://img.shields.io/badge/Reina1234554-181717?style=flat&logo=github)](https://github.com/Reina1234554) |
+| Name | GitHub |
+|---|---|
+| **Achraf AHMED FOUATIH** | [![GitHub](https://img.shields.io/badge/Achraf--af10-181717?style=flat&logo=github)](https://github.com/Achraf-af10) |
+| **Lyes AIBOUD** | [![GitHub](https://img.shields.io/badge/Lyes--aib-181717?style=flat&logo=github)](https://github.com/Lyes-aib) |
+| **Reina HALABY** | [![GitHub](https://img.shields.io/badge/Reina1234554-181717?style=flat&logo=github)](https://github.com/Reina1234554) |
 
 ---
 

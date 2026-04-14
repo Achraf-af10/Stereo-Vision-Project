@@ -231,12 +231,15 @@ Please keep your code clean, add comments where necessary, and test your changes
 
 ---
 
-## 👤 Author
+## 👥 Team
 
-**Achraf Ahmed Fouatih**
-Engineering Student — Robotics Specialty, Polytech Dijon (Le Creusot)
+This project was developed by three engineering students from **Polytech Dijon – Le Creusot** (Robotics, Year 2).
 
-[![GitHub](https://img.shields.io/badge/GitHub-Achraf--af10-181717?style=flat&logo=github)](https://github.com/Achraf-af10)
+| | Name | GitHub |
+|---|---|---|
+| 🤖 | **Achraf Ahmed Fouatih** | [![GitHub](https://img.shields.io/badge/Achraf--af10-181717?style=flat&logo=github)](https://github.com/Achraf-af10) |
+| 🤖 | **Lyes Aiboud** | [![GitHub](https://img.shields.io/badge/Lyes--aib-181717?style=flat&logo=github)](https://github.com/Lyes-aib) |
+| 🤖 | **Reina** | [![GitHub](https://img.shields.io/badge/Reina1234554-181717?style=flat&logo=github)](https://github.com/Reina1234554) |
 
 ---
 

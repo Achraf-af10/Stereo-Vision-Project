@@ -232,8 +232,6 @@ The disparity map is back-projected into 3D using the **Q** reprojection matrix 
 |:-:|:-:|
 | ![pcd_front](assets/pointcloud_front.png) | ![pcd_side](assets/pointcloud_side.png) |
 
-> 📁 To add your own screenshots, place them in the `assets/` folder at the root of the repository with the filenames shown above.
-
 ---
 
 ## ⚙️ Key Parameters
@@ -258,26 +256,6 @@ The disparity map is back-projected into 3D using the **Q** reprojection matrix 
 
 ---
 
-## ⚠️ Known Issues
-
-**Qt font warning on Linux (Wayland/GNOME)**
-
-When running scripts that open OpenCV windows, you may see:
-
-```
-Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome.
-QFontDatabase: Cannot find font directory ...
-```
-
-This is a cosmetic warning from OpenCV's Qt backend and **does not affect functionality**. To suppress it, run:
-
-```bash
-export QT_QPA_PLATFORM=xcb
-```
-
-Or add it permanently to your `~/.bashrc`.
-
----
 
 
 ## 👥 Team

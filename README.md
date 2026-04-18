@@ -271,5 +271,5 @@ This project was developed by three engineering students from **Polytech Dijon**
 ---
 
 <div align="center">
-<sub>Built with 🔬 and OpenCV · Polytech Dijon 2025</sub>
+<sub>Built with 🔬 and OpenCV · Polytech Dijon 2026</sub>
 </div>
